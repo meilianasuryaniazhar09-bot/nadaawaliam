@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biodata — Nada Awalliya Melati (Dunia Fantasi)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b1020; /* deep night */
+      --bg2:#1b1430; /* purple haze */
+      --card:#0f1320cc;
+      --accent:#9b7cff; /* soft magic */
+      --muted:#bfc6d8;
+      --glass: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Poppins',system-ui,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--muted); background:linear-gradient(180deg,var(--bg1),var(--bg2)); min-height:100vh; overflow-x:hidden;
+    }
+    /* canvas background full-bleed */
+    #bgCanvas{ position:fixed; inset:0; z-index:0; }
+    .container{position:relative; z-index:2; max-width:1100px; margin:32px auto; padding:28px;}
+
+    header.hero{display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:center; margin-bottom:18px}
+    .avatar{width:120px;height:120px;border-radius:18px; overflow:hidden; border:3px solid rgba(255,255,255,0.06); box-shadow:0 8px 30px rgba(0,0,0,0.6); background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-meta h1{margin:0;font-size:22px;color:#fff; letter-spacing:0.6px}
+    .quote{font-size:13px; color:var(--muted); margin-top:6px}
+
+    .grid{display:grid; grid-template-columns: 1fr 420px; gap:20px}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; padding:16px; box-shadow:0 6px 30px rgba(0,0,0,0.5); backdrop-filter: blur(6px);}    
+    .section-title{font-weight:700; color:var(--accent); margin-bottom:8px}
+    dl{display:grid; grid-template-columns:120px 1fr; gap:6px 12px}
+    dt{color:var(--muted); font-weight:600}
+    dd{margin:0}
+
+    .list{display:flex; flex-direction:column; gap:8px}
+    .skill{display:flex; gap:8px; align-items:center}
+    .pill{padding:6px 10px; border-radius:999px; background:var(--glass); color:var(--muted); font-size:13px}
+
+    /* charts area */
+    .charts{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    canvas{width:100%!important; height:220px!important}
+
+    footer.small{margin-top:18px; font-size:13px; color:rgba(191,198,216,0.6)}
+
+    /* responsive */
+    @media (max-width:980px){ .grid{grid-template-columns:1fr} .charts{grid-template-columns:1fr} header.hero{grid-template-columns:92px 1fr} }
+
+    /* subtle glowing highlights */
+    .glow{box-shadow:0 6px 30px rgba(155,124,255,0.12), 0 0 20px rgba(155,124,255,0.06) inset}
+  </style>
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Tombol Pengubah Bahasa -->
+  <div style="position:fixed; top:10px; right:10px; z-index:99;">
+    <select id="languageSwitcher" style="padding:6px 10px; border-radius:6px; border:none; background:var(--glass); color:#fff;">
+      <option value="id">🇮🇩 Indonesia</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="ar">🇸🇦 العربية</option>
+      <option value="jv">📝 Jawa</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <header class="hero card glow" role="banner">
+      <div class="avatar" aria-hidden>
+        <img id="profilePhoto" src="WhatsApp Image 2025-09-22 at 10.54.24.png" alt="Foto Nada Awalliya Melati">
+      </div>
+      <div class="hero-meta">
+        <h1>Nada Awalliya Melati</h1>
+        <div class="quote">“Setiap hari adalah kesempatan baru untuk menjadi lebih baik.”</div>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+          <div class="pill">Pelajar • SMK Ma'arif NU Tirto</div>
+          <div class="pill">Pekalongan</div>
+          <div class="pill">Ingin jadi Jaksa</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section aria-labelledby="biodata" class="card">
+        <h3 class="section-title" id="biodata">1. Biodata Diri</h3>
+        <dl>
+          <dt>Nama</dt><dd>Nada Awalliya Melati</dd>
+          <dt>Tempat, Tgl Lahir</dt><dd>Pekalongan, 21 Juni 2009</dd>
+          <dt>Alamat</dt><dd>Desa Sidorejo RT 03 RW 02, Tirto, Pekalongan</dd>
+          <dt>Jenis Kelamin</dt><dd>Perempuan</dd>
+          <dt>Agama</dt><dd>Islam</dd>
+          <dt>Kewarganegaraan</dt><dd>Indonesia</dd>
+          <dt>Status</dt><dd>Pelajar</dd>
+        </dl>
+
+        <hr style="margin:14px 0;border:none;border-top:1px dashed rgba(255,255,255,0.03)">
+        <h4 class="section-title">2. Pendidikan</h4>
+        <ul class="list">
+          <li>MIS Sidorejo (2015-2021)</li>
+          <li>MTS Salafiyah NU Karanganyar Tirto (2021-2024)</li>
+          <li>SMK Ma'arif NU Tirto (2024)</li>
+        </ul>
+
+        <h4 class="section-title" style="margin-top:12px">3. Ketrampilan</h4>
+        <div class="list">
+          <div class="skill"><span class="pill">Mengelola emosi</span><small style="color:var(--muted)">— kestabilan & empati</small></div>
+          <div class="skill"><span class="pill">Memasak</span><small style="color:var(--muted)">— dasar & kreasi</small></div>
+        </div>
+
+        <h4 class="section-title" style="margin-top:12px">4. Riwayat Hidup / Pengalaman</h4>
+        <ul class="list">
+          <li>Mengikuti IPPNU</li>
+          <li>Mengikuti PMR di MTS</li>
+        </ul>
+
+        <h4 class="section-title" style="margin-top:12px">5. Prestasi</h4>
+        <ul class="list"><li>Juara 2 finger painting</li></ul>
+
+        <h4 class="section-title" style="margin-top:12px">6. Perjalanan Hidup</h4>
+        <p>Sejak kecil tinggal di Pekalongan, bersekolah di MIS Sidorejo, melanjutkan ke MTS Salafiyah NU Karanganyar, dan kini di SMK Ma'arif NU Tirto.</p>
+
+        <h4 class="section-title" style="margin-top:12px">7. Harapan Masa Depan</h4>
+        <p>Bisa menyelesaikan pendidikan dengan baik.</p>
+
+        <h4 class="section-title" style="margin-top:12px">8. Portofolio Keahlian</h4>
+        <div class="list"><div class="skill"><span class="pill">Microsoft Office</span></div><div class="skill"><span class="pill">Desain Grafis</span></div></div>
+      </section>
+
+      <aside class="card">
+        <h3 class="section-title">Statistik & Hobi</h3>
+        <p style="color:var(--muted);font-size:13px">Visualisasi kegiatan harian & hobi — interaktif dan glowing.</p>
+        <div style="margin-top:12px" class="charts">
+          <div>
+            <h4 style="margin:0 0 8px 0">Radar — Tingkat Minat</h4>
+            <canvas id="radarChart" aria-label="Radar chart"></canvas>
+          </div>
+          <div>
+            <h4 style="margin:0 0 8px 0">Pie — Waktu Per Aktivitas</h4>
+            <canvas id="pieChart" aria-label="Pie chart"></canvas>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <h4 style="margin:0 0 8px 0">Bar — Perbandingan Waktu</h4>
+          <canvas id="barChart" aria-label="Bar chart"></canvas>
+        </div>
+
+        <hr style="margin:14px 0;border:none;border-top:1px dashed rgba(255,255,255,0.03)">
+        <h4 class="section-title">Hobi</h4>
+        <ul class="list">
+          <li>Memasak</li>
+          <li>Mendengar Musik</li>
+          <li>Nonton film</li>
+        </ul>
+      </aside>
+
+    </main>
+
+    <footer class="small">Made with ✨ — tema: Dunia Fantasi • Edit foto dengan mengganti <code>#profilePhoto</code> src di file ini.</footer>
+  </div>
+
+  <script>
+    // Helper: load a script dynamically and wait until a global is ready. This avoids "THREE is not defined" errors
+    function loadScript(url){
+      return new Promise((resolve,reject)=>{
+        const s = document.createElement('script');
+        s.src = url;
+        s.async = false; // keep order
+        s.onload = () => resolve(s);
+        s.onerror = () => reject(new Error('Failed to load ' + url));
+        document.head.appendChild(s);
+      });
+    }
+
+    function waitForGlobal(name, timeout = 7000){
+      return new Promise((resolve, reject) => {
+        if(window[name]) return resolve(window[name]);
+        const start = Date.now();
+        const iv = setInterval(()=>{
+          if(window[name]){ clearInterval(iv); return resolve(window[name]); }
+          if(Date.now() - start > timeout){ clearInterval(iv); return reject(new Error(name + ' not available')); }
+        }, 50);
+      });
+    }
+
+    async function ensureLib(name, url){
+      try{
+        return await waitForGlobal(name, 800);
+      }catch(e){
+        // not present yet, try to load
+        await loadScript(url);
+        return await waitForGlobal(name, 7000);
+      }
+    }
+
+    (async function(){
+      // CDN fallbacks (choose stable builds that expose globals)
+      const THREE_URL = 'https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js';
+      const GSAP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+      const CHART_URL = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+
+      try{
+        // ensure libraries are available in order we need them
+        await ensureLib('THREE', THREE_URL);
+        await ensureLib('gsap', GSAP_URL);
+        await ensureLib('Chart', CHART_URL);
+        initAll();
+      }catch(err){
+        console.error('Library load failed:', err);
+        // degrade gracefully: hide bg canvas if THREE not available
+        const canvas = document.getElementById('bgCanvas');
+        if(canvas) canvas.style.display = 'none';
+        // try to initialize charts only if Chart is present
+        if(window.Chart) initChartsOnly();
+      }
+    })();
+
+    // Main initializer once libs are ready
+    function initAll(){
+      initThree();
+      initGSAP();
+      initCharts();
+      addInteractions();
+    }
+
+    /* -------------------- Three.js background - gentle floating particles -------------------- */
+    let threeState = { renderer:null, scene:null, camera:null, points:null, rafId:null };
+    function initThree(){
+      const canvas = document.getElementById('bgCanvas');
+      // safety check
+      if(typeof THREE === 'undefined' || !canvas) return;
+
+      const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+      renderer.setPixelRatio(window.devicePixelRatio || 1);
+      let width = innerWidth, height = innerHeight;
+      renderer.setSize(width, height);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, width/height, 0.1, 1000);
+      camera.position.z = 30;
+
+      const particles = new THREE.BufferGeometry();
+      const count = 1200;
+      const positions = new Float32Array(count * 3);
+      const sizes = new Float32Array(count);
+      for(let i=0;i<count;i++){
+        const i3 = i*3;
+        positions[i3] = (Math.random()-0.5)*120;
+        positions[i3+1] = (Math.random()-0.5)*40;
+        positions[i3+2] = (Math.random()-0.5)*60;
+        sizes[i] = Math.random()*2.2 + 0.4;
+      }
+      particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
+      particles.setAttribute('size', new THREE.BufferAttribute(sizes,1));
+
+      const material = new THREE.PointsMaterial({size:1.6, transparent:true, opacity:0.9, depthWrite:false});
+      material.color = new THREE.Color('#a788ff');
+      material.blending = THREE.AdditiveBlending;
+
+      const points = new THREE.Points(particles, material);
+      scene.add(points);
+
+      // subtle spotlight
+      const light = new THREE.DirectionalLight(0xffffff, 0.2);
+      light.position.set(0,1,1);
+      scene.add(light);
+
+      function onResize(){
+        width = innerWidth; height = innerHeight; renderer.setSize(width,height); camera.aspect = width/height; camera.updateProjectionMatrix();
+      }
+      window.addEventListener('resize', onResize);
+
+      function animate(){
+        threeState.rafId = requestAnimationFrame(animate);
+        points.rotation.y += 0.0008;
+        points.rotation.x += 0.0002;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      threeState = { renderer, scene, camera, points, rafId: threeState.rafId };
+
+      // pause when the page is hidden to save battery
+      document.addEventListener('visibilitychange', ()=>{
+        if(document.hidden){ if(threeState.rafId) cancelAnimationFrame(threeState.rafId); }
+        else animate();
+      });
+    }
+
+    /* -------------------- GSAP micro-animations for DOM -------------------- */
+    function initGSAP(){
+      if(typeof gsap === 'undefined') return;
+      gsap.from('.hero-meta h1', {y:12, opacity:0, duration:0.9, ease:'power3.out'});
+      gsap.from('.avatar', {scale:0.9, opacity:0, duration:1, ease:'elastic.out(1,0.7)'});
+      gsap.from('.card', {stagger:0.06, y:8, opacity:0, duration:0.9, ease:'power2.out'});
+    }
+
+    /* -------------------- Chart.js glowing plugin & charts -------------------- */
+    const glowPlugin = {
+      id: 'shadowBlur',
+      beforeDraw(chart,args,opts){
+        const {ctx} = chart;
+        ctx.save();
+        ctx.shadowColor = opts && opts.color ? opts.color : 'rgba(155,124,255,0.9)';
+        ctx.shadowBlur = opts && opts.blur ? opts.blur : 18;
+      },
+      afterDraw(chart){
+        const {ctx} = chart;
+        ctx.restore();
+      }
+    };
+
+    // Data
+    const activityLabels = ['Tidur','Sekolah','Belajar mandiri','Hobi','Sosialisasi','Lain-lain'];
+    const activityValues = [8*7, 6*5, 2*5, 3*4, 1*7, 4*7]; // hours/week approx
+
+    const radarLabels = ['Memasak','Mendengar Musik','Nonton film','Belajar','Sosialisasi'];
+    const radarValues = [8,7,6,7,5];
+
+    function initChartsOnly(){
+      // called if only charts are available (degraded)
+      if(typeof Chart === 'undefined') return;
+      Chart.register(glowPlugin);
+
+      try{
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        const barCtx = document.getElementById('barChart').getContext('2d');
+
+        const common = {plugins:{legend:{display:false}}, maintainAspectRatio:false};
+
+        new Chart(radarCtx, {type:'radar', data:{labels:radarLabels, datasets:[{data:radarValues, fill:true, backgroundColor:'rgba(155,124,255,0.14)', borderColor:'#9b7cff', pointBackgroundColor:'#fff', pointRadius:4}]}, options: Object.assign(common, {scales:{r:{grid:{color:'rgba(255,255,255,0.03)'}, angleLines:{color:'rgba(255,255,255,0.03)'}}}, plugins:{shadowBlur:{color:'rgba(155,124,255,0.85)', blur:20}} })});
+
+        new Chart(pieCtx, {type:'pie', data:{labels:activityLabels, datasets:[{data:activityValues, backgroundColor:['rgba(155,124,255,0.9)','rgba(122,200,255,0.9)','rgba(255,160,122,0.9)','rgba(125,255,170,0.9)','rgba(255,220,120,0.9)','rgba(200,180,255,0.9)'], hoverOffset:8}]}, options: Object.assign(common, {plugins:{shadowBlur:{color:'rgba(255,200,120,0.9)', blur:20}}})});
+
+        new Chart(barCtx, {type:'bar', data:{labels:activityLabels, datasets:[{label:'Jam per minggu (perkiraan)', data:activityValues, backgroundColor:activityValues.map(v=>'rgba(155,124,255,0.8)')} ]}, options: Object.assign(common, {scales:{y:{beginAtZero:true}}, plugins:{shadowBlur:{color:'rgba(155,124,255,0.9)', blur:14}} })});
+
+      }catch(e){ console.error('Chart init failed', e); }
+    }
+
+    function initCharts(){
+      if(typeof Chart === 'undefined') return initChartsOnly();
+      Chart.register(glowPlugin);
+
+      const radarCtx = document.getElementById('radarChart').getContext('2d');
+      const pieCtx = document.getElementById('pieChart').getContext('2d');
+      const barCtx = document.getElementById('barChart').getContext('2d');
+
+      const common = {plugins:{legend:{display:false}}, maintainAspectRatio:false};
+
+      const radarChart = new Chart(radarCtx, {
+        type:'radar', data:{labels:radarLabels, datasets:[{data:radarValues, fill:true, backgroundColor:'rgba(155,124,255,0.14)', borderColor:'#9b7cff', pointBackgroundColor:'#fff', pointRadius:4}]},
+        options: Object.assign(common, {scales:{r:{grid:{color:'rgba(255,255,255,0.03)'}, angleLines:{color:'rgba(255,255,255,0.03)'}}}, plugins:{shadowBlur:{color:'rgba(155,124,255,0.85)', blur:20}} })
+      });
+
+      const pieChart = new Chart(pieCtx, {
+        type:'pie', data:{labels:activityLabels, datasets:[{data:activityValues, backgroundColor:['rgba(155,124,255,0.9)','rgba(122,200,255,0.9)','rgba(255,160,122,0.9)','rgba(125,255,170,0.9)','rgba(255,220,120,0.9)','rgba(200,180,255,0.9)'], hoverOffset:8}]},
+        options: Object.assign(common, {plugins:{shadowBlur:{color:'rgba(255,200,120,0.9)', blur:20}}})
+      });
+
+      const barChart = new Chart(barCtx, {
+        type:'bar', data:{labels:activityLabels, datasets:[{label:'Jam per minggu (perkiraan)', data:activityValues, backgroundColor:activityValues.map(v=>'rgba(155,124,255,0.8)')} ]},
+        options: Object.assign(common, {scales:{y:{beginAtZero:true}}, plugins:{shadowBlur:{color:'rgba(155,124,255,0.9)', blur:14}} })
+      });
+
+      // small interactive alerts on click
+      [radarCtx.canvas,pieCtx.canvas,barCtx.canvas].forEach(c=>{
+        c.style.cursor='pointer';
+        c.addEventListener('click', (e)=>{
+          const chart = Chart.getChart(c);
+          if(!chart) return;
+          const el = chart.getElementsAtEventForMode(e,'nearest',{intersect:true},true);
+          if(el && el.length){ const idx = el[0].index; alert(chart.data.labels[idx] + '\nNilai: ' + chart.data.datasets[0].data[idx]); }
+        });
+      });
+    }
+
+    /* -------------------- Interactions -------------------- */
+    function addInteractions(){
+      // Clicking the avatar lets user change the photo quickly (local file)
+      const avatar = document.querySelector('.avatar');
+      if(avatar){
+        avatar.addEventListener('click', ()=>{
+          const input = document.createElement('input'); input.type='file'; input.accept='image/*';
+          input.onchange = e => { const f = e.target.files[0]; if(!f) return; const url = URL.createObjectURL(f); document.getElementById('profilePhoto').src = url; }
+          input.click();
+        });
+      }
+    }
+
+    // --- Language switcher (translations for headings only) ---
+    const translations = {
+      en: {
+        "Biodata Diri":"Personal Information",
+        "Pendidikan":"Education",
+        "Ketrampilan":"Skills",
+        "Riwayat Hidup / Pengalaman":"Experience",
+        "Prestasi":"Achievements",
+        "Perjalanan Hidup":"Life Journey",
+        "Harapan Masa Depan":"Future Hopes",
+        "Portofolio Keahlian":"Skills Portfolio",
+        "Statistik & Hobi":"Statistics & Hobbies",
+        "Hobi":"Hobbies"
+      },
+      ar: {
+        "Biodata Diri":"المعلومات الشخصية",
+        "Pendidikan":"التعليم",
+        "Ketrampilan":"المهارات",
+        "Riwayat Hidup / Pengalaman":"الخبرات",
+        "Prestasi":"الإنجازات",
+        "Perjalanan Hidup":"مسيرة الحياة",
+        "Harapan Masa Depan":"الطموحات المستقبلية",
+        "Portofolio Keahlian":"ملف المهارات",
+        "Statistik & Hobi":"الإحصاءات والهوايات",
+        "Hobi":"الهوايات"
+      },
+      jv: {
+        "Biodata Diri":"Biodata Diri (ꦧꦶꦢꦺꦴꦢꦠꦢꦶꦫꦶ)",
+        "Pendidikan":"Pendidikan (ꦥꦼꦤ꧀ꦝꦶꦏꦶꦤ꧀)",
+        "Ketrampilan":"Ketrampilan (ꦏꦼꦠꦿꦩ꧀ꦥꦶꦭꦤ꧀)",
+        "Riwayat Hidup / Pengalaman":"Riwayat Urip / Pengalaman (ꦫꦶꦮꦾꦠ꧀ꦲꦸꦫꦶꦥ꧀)",
+        "Prestasi":"Prestasi (ꦥꦿꦺꦱ꧀ꦠꦱꦶ)",
+        "Perjalanan Hidup":"Lelampahan Urip (ꦭꦺꦭꦩ꧀ꦥꦃꦤ꧀ꦲꦸꦫꦶꦥ꧀)",
+        "Harapan Masa Depan":"Pangarep-arep Mangsa Ngarep (ꦥꦁꦲꦺꦫꦥ꧀ꦲꦺꦫꦺꦥ꧀)",
+        "Portofolio Keahlian":"Portofolio Kaprigelan (ꦥꦺꦴꦂꦠꦺꦴꦥꦭꦶꦲꦺꦴ)",
+        "Statistik & Hobi":"Statistik & Hobi (ꦲꦱ꧀ꦠꦠꦶꦱ꧀ꦠꦶꦏ꧀)",
+        "Hobi":"Hobi (ꦲꦺꦴꦧꦶ)"
+      }
+    };
+
+    // Attach language switcher behavior once DOM is ready
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const switcher = document.getElementById('languageSwitcher');
+      if(!switcher) return;
+
+      switcher.addEventListener('change', function(){
+        const lang = this.value;
+        if(lang === 'id'){ location.reload(); return; }
+        const dict = translations[lang];
+        if(!dict) return;
+        document.querySelectorAll('.section-title, h3, h4').forEach(el=>{
+          const key = el.textContent && el.textContent.trim();
+          if(key && dict[key]) el.textContent = dict[key];
+        });
+      });
+    });
+
+  </script>
+</body>
+</html>
